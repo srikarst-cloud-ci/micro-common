@@ -44,7 +44,7 @@ var Listener = /** @class */ (function () {
     }
     Listener.prototype.listen = function () {
         var _this = this;
-        this.client.consume(this.queueGroupName, function (msg) { return __awaiter(_this, void 0, void 0, function () {
+        this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 this.onMessage(msg);
                 return [2 /*return*/];

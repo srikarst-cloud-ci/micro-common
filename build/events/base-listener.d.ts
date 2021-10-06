@@ -6,7 +6,6 @@ interface Event {
 }
 export declare abstract class Listener<T extends Event> {
     abstract subject: T["subject"];
-    abstract queueGroupName: string;
     abstract onMessage(msg: any): void;
     protected client: Channel;
     protected ackWait: number;
