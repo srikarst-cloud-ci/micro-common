@@ -8,7 +8,6 @@ interface Event {
 
 export abstract class Listener<T extends Event> {
   abstract subject: T["subject"];
-  abstract queueGroupName: string;
   abstract onMessage(msg: any): void;
   protected client: Channel;
   protected ackWait = 5 * 1000;
@@ -18,7 +17,7 @@ export abstract class Listener<T extends Event> {
   }
 
   listen() {
-    this.client.consume(this.queueGroupName, async (msg: any) => {
+    this.client.consume(this.subject, async (msg: any) => {
       this.onMessage(msg);
     });
   }
