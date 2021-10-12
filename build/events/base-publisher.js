@@ -45,11 +45,8 @@ var Publisher = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: 
-                    // return new Promise((resolve, reject) => {
-                    return [4 /*yield*/, this.client.assertQueue(this.subject, { durable: true })];
+                    case 0: return [4 /*yield*/, this.client.assertQueue(this.subject, { durable: true })];
                     case 1:
-                        // return new Promise((resolve, reject) => {
                         _a.sent();
                         this.client.sendToQueue(this.subject, Buffer.from(JSON.stringify(data)));
                         return [2 /*return*/];

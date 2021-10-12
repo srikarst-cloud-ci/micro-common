@@ -10,7 +10,7 @@ export declare abstract class Listener<T extends Event> {
     protected client: Channel;
     protected ackWait: number;
     constructor(client: Channel);
-    listen(): void;
+    listen(): Promise<void>;
     parseMessage(msg: any): any;
 }
 export {};

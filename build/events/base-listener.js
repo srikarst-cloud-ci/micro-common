@@ -43,13 +43,23 @@ var Listener = /** @class */ (function () {
         this.client = client;
     }
     Listener.prototype.listen = function () {
-        var _this = this;
-        this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                this.onMessage(msg);
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.assertQueue(this.subject, { durable: true })];
+                    case 1:
+                        _a.sent();
+                        this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                this.onMessage(msg);
+                                return [2 /*return*/];
+                            });
+                        }); });
+                        return [2 /*return*/];
+                }
             });
-        }); });
+        });
     };
     Listener.prototype.parseMessage = function (msg) {
         var data = msg.getData();
