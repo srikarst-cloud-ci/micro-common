@@ -8,7 +8,7 @@ interface Event {
 
 export abstract class Listener<T extends Event> {
   abstract subject: T["subject"];
-  abstract onMessage(msg: any): void;
+  abstract onMessage(parsedData: any, msg: any): void;
   protected client: Channel;
   protected ackWait = 5 * 1000;
 
@@ -19,7 +19,8 @@ export abstract class Listener<T extends Event> {
   async listen() {
     await this.client.assertQueue(this.subject, { durable: true });
     this.client.consume(this.subject, async (msg: any) => {
-      this.onMessage(msg);
+      const parsedData = this.parseMessage(msg);
+      this.onMessage(parsedData, msg);
     });
   }
 
