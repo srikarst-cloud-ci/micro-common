@@ -51,8 +51,10 @@ var Listener = /** @class */ (function () {
                     case 1:
                         _a.sent();
                         this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
+                            var parsedData;
                             return __generator(this, function (_a) {
-                                this.onMessage(msg);
+                                parsedData = this.parseMessage(msg);
+                                this.onMessage(parsedData, msg);
                                 return [2 /*return*/];
                             });
                         }); });
