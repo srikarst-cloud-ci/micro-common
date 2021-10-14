@@ -66,7 +66,7 @@ var Listener = /** @class */ (function () {
     Listener.prototype.parseMessage = function (msg) {
         return typeof msg === "string"
             ? JSON.parse(msg)
-            : JSON.parse(msg.toString("utf8"));
+            : msg.toString("utf8");
     };
     return Listener;
 }());
