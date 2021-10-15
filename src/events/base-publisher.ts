@@ -16,7 +16,6 @@ export abstract class Publisher<T extends Event> {
 
   async publish(data: T["data"]): Promise<void> {
     await this.client.assertQueue(this.subject, { durable: true });
-    console.log("send", data)
     this.client.sendToQueue(this.subject, Buffer.from(JSON.stringify(data)));
   }
 }

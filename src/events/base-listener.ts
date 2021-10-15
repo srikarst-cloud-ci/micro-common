@@ -27,6 +27,6 @@ export abstract class Listener<T extends Event> {
   parseMessage(msg: any) {
     return typeof msg === "string"
       ? JSON.parse(msg)
-      : msg.toString("utf8");
+      : JSON.parse(msg.toString("utf8"));
   }
 }
