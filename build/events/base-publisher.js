@@ -48,7 +48,6 @@ var Publisher = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.client.assertQueue(this.subject, { durable: true })];
                     case 1:
                         _a.sent();
-                        console.log("send", data);
                         this.client.sendToQueue(this.subject, Buffer.from(JSON.stringify(data)));
                         return [2 /*return*/];
                 }
