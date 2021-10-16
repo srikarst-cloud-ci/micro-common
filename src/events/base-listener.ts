@@ -19,9 +19,9 @@ export abstract class Listener<T extends Event> {
   async listen() {
     await this.client.assertQueue(this.subject, { durable: true });
     this.client.consume(this.subject, async (msg: any) => {
-      console.log("msg", msg)
       const parsedData = this.parseMessage(msg);
       this.onMessage(parsedData, msg);
+      this.client.ack(msg)
     });
   }
 

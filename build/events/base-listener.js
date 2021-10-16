@@ -53,6 +53,7 @@ var Listener = /** @class */ (function () {
                         this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
                             var parsedData;
                             return __generator(this, function (_a) {
+                                console.log("msg", msg);
                                 parsedData = this.parseMessage(msg);
                                 this.onMessage(parsedData, msg);
                                 return [2 /*return*/];
@@ -66,7 +67,7 @@ var Listener = /** @class */ (function () {
     Listener.prototype.parseMessage = function (msg) {
         return typeof msg === "string"
             ? JSON.parse(msg)
-            : JSON.parse(msg.toString("utf8"));
+            : msg.content.toString();
     };
     return Listener;
 }());
