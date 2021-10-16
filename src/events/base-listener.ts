@@ -18,8 +18,8 @@ export abstract class Listener<T extends Event> {
   async listen() {
     await this.client.assertQueue(this.subject, { durable: true });
     this.client.consume(this.subject, async (msg: any) => {
-      const parsedData = this.parseMessage(msg);
-      this.onMessage(parsedData, msg);
+      const parsedData = this.parseMessage(msg.content);
+      this.onMessage(parsedData, msg.content);
       this.client.ack(msg)
     });
   }
@@ -27,6 +27,6 @@ export abstract class Listener<T extends Event> {
   parseMessage(msg: any) {
     return typeof msg === "string"
       ? JSON.parse(msg)
-      : msg.content.toString();
+      : JSON.parse(msg.toString());
   }
 }

@@ -39,7 +39,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Listener = void 0;
 var Listener = /** @class */ (function () {
     function Listener(client) {
-        this.ackWait = 5 * 1000;
         this.client = client;
     }
     Listener.prototype.listen = function () {

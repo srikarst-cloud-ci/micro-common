@@ -8,7 +8,6 @@ export declare abstract class Listener<T extends Event> {
     abstract subject: T["subject"];
     abstract onMessage(parsedData: any, msg: any): void;
     protected client: Channel;
-    protected ackWait: number;
     constructor(client: Channel);
     listen(): Promise<void>;
     parseMessage(msg: any): any;
