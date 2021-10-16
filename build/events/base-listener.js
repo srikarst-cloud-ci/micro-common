@@ -53,9 +53,9 @@ var Listener = /** @class */ (function () {
                         this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
                             var parsedData;
                             return __generator(this, function (_a) {
-                                console.log("msg", msg);
                                 parsedData = this.parseMessage(msg);
                                 this.onMessage(parsedData, msg);
+                                this.client.ack(msg);
                                 return [2 /*return*/];
                             });
                         }); });
