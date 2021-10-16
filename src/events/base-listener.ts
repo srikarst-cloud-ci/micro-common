@@ -10,7 +10,6 @@ export abstract class Listener<T extends Event> {
   abstract subject: T["subject"];
   abstract onMessage(parsedData: any, msg: any): void;
   protected client: Channel;
-  protected ackWait = 5 * 1000;
 
   constructor(client: Channel) {
     this.client = client;
