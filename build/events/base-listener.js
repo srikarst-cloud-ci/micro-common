@@ -52,8 +52,8 @@ var Listener = /** @class */ (function () {
                         this.client.consume(this.subject, function (msg) { return __awaiter(_this, void 0, void 0, function () {
                             var parsedData;
                             return __generator(this, function (_a) {
-                                parsedData = this.parseMessage(msg);
-                                this.onMessage(parsedData, msg);
+                                parsedData = this.parseMessage(msg.content);
+                                this.onMessage(parsedData, msg.content);
                                 this.client.ack(msg);
                                 return [2 /*return*/];
                             });
@@ -66,7 +66,7 @@ var Listener = /** @class */ (function () {
     Listener.prototype.parseMessage = function (msg) {
         return typeof msg === "string"
             ? JSON.parse(msg)
-            : msg.content.toString();
+            : JSON.parse(msg.toString());
     };
     return Listener;
 }());
