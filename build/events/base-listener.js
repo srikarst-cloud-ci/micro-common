@@ -63,10 +63,10 @@ var Listener = /** @class */ (function () {
             });
         });
     };
-    Listener.prototype.parseMessage = function (msg) {
-        return typeof msg === "string"
-            ? JSON.parse(msg)
-            : JSON.parse(msg.toString());
+    Listener.prototype.parseMessage = function (content) {
+        return typeof content === "string"
+            ? JSON.parse(content)
+            : JSON.parse(content.toString());
     };
     return Listener;
 }());

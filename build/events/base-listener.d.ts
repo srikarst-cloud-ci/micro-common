@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { Channel } from "amqplib";
 import { Subjects } from "./subjects";
 interface Event {
@@ -10,6 +11,6 @@ export declare abstract class Listener<T extends Event> {
     protected client: Channel;
     constructor(client: Channel);
     listen(): Promise<void>;
-    parseMessage(msg: any): any;
+    parseMessage(content: Buffer): any;
 }
 export {};
