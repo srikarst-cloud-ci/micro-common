@@ -1,5 +1,5 @@
 {
-  "name": "@srikar-test/common",
+  "name": "@srikar-test/micro-common",
   "version": "1.0.34",
   "description": "",
   "main": "./build/index.js",
