@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
+import mongoose from "mongoose";
 interface UserPayload {
-    id: string;
+    id: mongoose.Schema.Types.ObjectId;
     user: string;
 }
 declare global {
